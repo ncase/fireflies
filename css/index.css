@@ -1,3 +1,4 @@
+/* TODO: ACTUALLY INSTALL THE FONT, FROM LEAGUE OF MOVEABLE TYPE */
 body{
 	margin:0;
 }
@@ -12,9 +13,14 @@ body{
 	position: absolute;
 	top:0; left:0;
 	width: 350px;
-	margin-left: 80px;
+	margin-left: 65px;
+	padding-left: 15px;
+	padding-right: 15px;
 	padding-top: 50px;
 	padding-bottom: 300px;
+
+	/* Background */
+	background: rgba(0,0,0,0.5);
 
 	/* Font */
 	font-family: "Goudy Bookletter 1911";
