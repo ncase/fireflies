@@ -1,0 +1,51 @@
+﻿{"frames": {
+
+"firefly0000":
+{
+	"frame": {"x":0,"y":0,"w":350,"h":350},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":350,"h":350},
+	"sourceSize": {"w":350,"h":350}
+},
+"firefly0001":
+{
+	"frame": {"x":0,"y":350,"w":350,"h":350},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":350,"h":350},
+	"sourceSize": {"w":350,"h":350}
+},
+"firefly0002":
+{
+	"frame": {"x":0,"y":700,"w":350,"h":350},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":350,"h":350},
+	"sourceSize": {"w":350,"h":350}
+},
+"firefly0003":
+{
+	"frame": {"x":0,"y":1050,"w":350,"h":350},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":350,"h":350},
+	"sourceSize": {"w":350,"h":350}
+},
+"firefly0004":
+{
+	"frame": {"x":0,"y":1400,"w":350,"h":350},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":350,"h":350},
+	"sourceSize": {"w":350,"h":350}
+}},
+"meta": {
+	"app": "Adobe Animate",
+	"version": "15.2.0.66",
+	"image": "firefly.png",
+	"format": "RGBA8888",
+	"size": {"w":512,"h":2048},
+	"scale": "1"
+}
+}

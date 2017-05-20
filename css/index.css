@@ -1,0 +1,32 @@
+body{
+	margin:0;
+}
+#game{
+	position: fixed;
+	top:0; left:0;
+	cursor: pointer;
+}
+#words{
+
+	/* Positioning */
+	position: absolute;
+	top:0; left:0;
+	width: 350px;
+	margin-left: 80px;
+	padding-top: 50px;
+	padding-bottom: 300px;
+
+	/* Font */
+	font-family: "Goudy Bookletter 1911";
+	font-size: 22px;
+	/*letter-spacing: 0.05em;*/
+	color: #fff;
+
+	/* Do not select */
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	cursor: default;
+
+}
