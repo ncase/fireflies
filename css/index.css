@@ -1,6 +1,17 @@
-/* TODO: ACTUALLY INSTALL THE FONT, FROM LEAGUE OF MOVEABLE TYPE */
+@font-face{
+	font-family: 'Goudy';
+	font-style: normal;
+	src: url('GoudyStM-webfont.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Goudy';
+	font-style: italic;
+	src: url('GoudyStM-Italic-webfont.ttf') format('truetype');
+}
+
 body{
 	margin:0;
+	background: #000;
 }
 #game{
 	position: fixed;
@@ -23,16 +34,28 @@ body{
 	background: rgba(0,0,0,0.5);
 
 	/* Font */
-	font-family: "Goudy Bookletter 1911";
-	font-size: 22px;
-	/*letter-spacing: 0.05em;*/
+	font-family: 'Goudy';
+	font-size: 20px;
+	line-height: 1.5em;
 	color: #fff;
 
-	/* Do not select */
+}
+#words.no-select{
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-	cursor: default;
-
+	cursor: pointer;
+}
+#words h1{
+	font-size: 3em;
+	margin-top: 0.5em;
+	margin-bottom: 0;
+	line-height: 1.5em;
+}
+#words a{
+	color: #FEE27F;
+}
+#words a:hover{
+	color: #FEEDB1;
 }

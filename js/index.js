@@ -1,10 +1,36 @@
+/******************************
+
+PRE-LOAD THESE PUPPIES 
+
+*******************************/
 _addToManifest(manifest,{
 	firefly: "sprites/firefly.json"
 });
 
+/******************************
+
+CONSTANTS-ISH
+(they're not really constants, w/e)
+
+*******************************/
+
+var NUM_FIREFLIES = 150;
+var FLY_LOOP = 50;
+var FLY_SWERVE = 0.1;
+var FLY_PERIOD = 3*60; 
+var FLY_RADIUS = 200;
+var FLY_PULL = 5;
+var FLY_SYNC = false;
+var MOUSE_RADIUS = 200;
+
+/******************************
+
+THE MAIN GAME CODE
+
+*******************************/
+
 var app;
 var fireflies = [];
-var NUM_FIREFLIES = 150;
 window.onload = function(){
 
 	// Create app!
@@ -37,13 +63,12 @@ window.onload = function(){
 
 };
 
-var FLY_LOOP = 50;
-var FLY_SWERVE = 0.1;
-var FLY_PERIOD = 3*60; 
-var FLY_RADIUS = 200;
-var FLY_PULL = 5;
-var FLY_SYNC = false;
-var MOUSE_RADIUS = 200;
+/******************************
+
+THE FIREFLY CODE
+
+*******************************/
+
 function Firefly(){
 
 	var self = this;
@@ -159,3 +184,53 @@ function Firefly(){
 	self.update(0);
 
 }
+
+/******************************
+
+UI CODE: Resize, make widgets, etc...
+
+*******************************/
+
+subscribe("mousedown",function(){
+	$("#words").className = "no-select";
+});
+subscribe("mouseup",function(){
+	$("#words").className = "";
+});
+
+window.onresize = function(){
+	if(app) app.renderer.resize(document.body.clientWidth, document.body.clientHeight);
+};
+
+/******************************
+
+WIDGET CODE: Modifying "Constants"
+
+*******************************/
+
+// Num of Fireflies
+
+subscribe("slider/numFireflies", function(){
+});
+
+// Internal Clock
+
+subscribe("toggle/showClocks", function(){
+});
+subscribe("slider/clockSpeed", function(){
+});
+
+// Neighbor Nudge Rule
+
+subscribe("toggle/neighborNudgeRule", function(){
+});
+subscribe("slider/neighborRadius", function(){
+});
+subscribe("slider/nudgeAmount", function(){
+});
+
+// Reset Everything
+
+subscribe("button/reset", function(){
+});
+

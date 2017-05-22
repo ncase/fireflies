@@ -13,6 +13,7 @@ Mouse.init = function(target){
 	};
 	var _onmouseup = function(){
 		Mouse.pressed = false;
+		publish("mouseup");
 	};
 
 	// Add mouse & touch events!
