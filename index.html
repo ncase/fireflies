@@ -55,7 +55,7 @@
 
 <p>And instead of synchronizing their clocks to a central leader, each firefly does the following:</p>
 
-<p>Step 1: when you see a nearby firefly flash, spring your clock a little bit forward.</p>
+<p>Step 1: when you see a nearby firefly flash, nudge your clock a little bit forward.</p>
 
 <p>
 <img src="ui/nudge.png" width="350"/>
@@ -65,7 +65,14 @@
 
 <p>Can such a small, short-ranged interaction really cause an entire forest-ful of fireflies to flash in synchronous harmony? Only one way to find out...</p>
 
-<p>// button</p>
+<hr/>
+
+	<widget type="toggle"
+		label="'Nudge thy neighbor' rule:<br>click to turn on &rarr;"
+		color="#FEE27F" label-on="ON" label-off="OFF">
+	</widget>
+
+<hr/>
 
 <p>Wait. Watch carefully.</p>
 
@@ -96,7 +103,70 @@
 
 <p>Here&#39;s a few more buttons &amp; sliders you can use, to play around with these virtual fireflies:</p>
 
-<p>// buttons</p>
+<!--
+
+Num of fireflies
+...
+Show clocks
+How fast should clock be?
+...
+Nudge thy neighbor
+how much to nudge each clock?
+How close must neighbor be?
+...
+Reset everything
+
+-->
+
+<hr/>
+
+	<widget type="slider"
+		label="Number of fireflies:"
+		color="#FEE27F"
+		min=50 max=500
+		label-min="50" label-max="500">
+	</widget>
+
+<hr/>
+
+	<widget type="toggle"
+		label="Show clocks:"
+		color="#FEE27F" label-on="ON" label-off="OFF">
+	</widget>
+	<widget type="slider"
+		label="Fireflies' clock speed:"
+		color="#FEE27F" 
+		min=? max=?
+		label-min="hecka slow" label-max="hecka fast">
+	</widget>
+
+<hr/>
+
+	<widget type="toggle"
+		label="'Nudge thy neighbor' rule:"
+		color="#FEE27F" label-on="ON" label-off="OFF">
+	</widget>
+	<widget type="slider"
+		label="How much to nudge clock forward:"
+		color="#FEE27F" 
+		min=? max=?
+		label-min="a bit" label-max="a lot">
+	</widget>
+	<widget type="slider"
+		label="How close neighbor must be to be affected:"
+		color="#FEE27F" 
+		min=? max=?
+		label-min="close" label-max="far">
+	</widget>
+
+<hr/>
+
+	<widget type="button"
+		label="reset everything"
+		color="#FEE27F" onclick="publish('reset');">
+	</widget>
+
+<hr/>
 
 <p>And that&#39;s the secret behind our fireflies&#39; magic trick:</p>
 
@@ -138,6 +208,7 @@
 <script src="js/minpubsub.src.js"></script>
 <script src="js/helpers.js"></script>
 <script src="js/Mouse.js"></script>
+<script src="js/widgets.js"></script>
 
 <!-- Main code -->
 <script src="js/index.js"></script>

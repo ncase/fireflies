@@ -1,8 +1,130 @@
+.widget{
+	font-size: 22px;
+	font-family: Helvetica, Arial, sans-serif;
+	font-weight: 100;
+	margin: 20px 0;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	cursor: default;
+	
+}
+
+/**************
+
+TOGGLE SWITCHES
+
+**************/
 .widget-toggle{
+	width: 100%;
+	overflow: hidden;
+}
+.widget-toggle #label{
+	width: calc(100% - 130px);
+	float: left;
+	margin-top: 4px;
+}
+.widget-toggle #toggle{
+	font-size: 25px;
+	width: 120px;
+	height: 40px;
+	float: right;
+	overflow: hidden;
+	position: relative;
+	border-radius: 30px;
+	border: 1px solid #fff;
+	cursor: pointer;
+	transition: background 0.5s ease-in-out;
+}
+.widget-toggle #toggle #toggle_switch{
+	position: absolute;
+	transition: left 0.5s ease-in-out;
+}
+.widget-toggle #toggle #toggle_switch div{
+	position: absolute;
+}
+.widget-toggle #toggle #toggle_switch #toggle_on,
+.widget-toggle #toggle #toggle_switch #toggle_off{
+	width: 90px;
+	text-align: center;
+	padding-top: 6px;
+}
+.widget-toggle #toggle #toggle_switch #toggle_on{
+    left: 110px;
+}
+.widget-toggle #toggle #toggle_switch #toggle_knob{
+	width: 34px;
+	height: 34px;
+	border-radius: 34px;
+	top: 3px; left: 83px;
 }
 
+/**************
+
+SLIDER
+
+**************/
 .widget-slider{
+	width: 100%;
+	overflow: hidden;
+}
+.widget-slider #top_label{}
+.widget-slider #slider{
+	width: 100%;
+	height: 30px;
+	position: relative;
+	margin: 5px 0;
+}
+.widget-slider #slider #slider_bar{
+	width: 100%;
+	height:0;
+	border-bottom: 1px solid #fff;
+	position: absolute;
+	top:15px;
+}
+.widget-slider #slider #slider_knob{
+	width: 30px;
+	height: 30px;
+	border-radius: 30px;
+	position: absolute;
+	cursor: -webkit-grab;
+	cursor: -moz-grab;
+	cursor: -ms-grab;
+	cursor: grab;
+}
+.widget-slider #slider #slider_knob[grabbing]{
+	cursor: -webkit-grabbing;
+	cursor: -moz-grabbing;
+	cursor: -ms-grabbing;
+	cursor: grabbing;
+}
+.widget-slider #bottom_label{
+	font-size: 0.8em;
+	height: 0.8em;
+	position: relative;
+}
+.widget-slider #bottom_label #label_min{
+	float:left;
+}
+.widget-slider #bottom_label #label_max{
+	float:right;
 }
 
+
+/**************
+
+BUTTONS
+
+**************/
 .widget-button{
+	font-size: 25px;
+	padding: 7px 10px;
+	width: 200px;
+	border-radius: 30px;
+	border: 1px solid #fff;
+	text-align: center;
+	cursor: pointer;
+	transition: all 0.15s ease-in-out;
 }

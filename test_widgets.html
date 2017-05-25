@@ -1,0 +1,59 @@
+<link rel="stylesheet" href="css/widgets.css">
+
+<body style="background:#222;">
+<div style="width:350px; margin:50px; overflow:hidden">
+
+	<widget type="toggle"
+		id="nudge_rule"
+		value=0
+		label="Nudge-neighbor rule:"
+		background="#000" color="#fff"
+		background-on="#FEE27F" color-on="#000"
+		label-on="ON" label-off="OFF">
+	</widget>
+
+	<widget type="toggle"
+		id="show_clocks"
+		value=1
+		label="Show clocks:"
+		background="#000" color="#fff"
+		background-on="#FEE27F" color-on="#000"
+		label-on="ON" label-off="OFF">
+	</widget>
+
+	<widget type="slider"
+		id="nudge_clock"
+		label="How much to nudge clock forward:"
+		background="#FEE27F" color="#fff"
+		min=0 max=100 step=1
+		label-min="a bit" label-max="a lot">
+	</widget>
+
+	<widget type="slider"
+		id="nudge_clock"
+		label="How much to nudge clock forward:"
+		background="#FEE27F" color="#fff"
+		min=0 max=100 step=1
+		label-min="a bit" label-max="a lot">
+	</widget>
+
+	<widget type="button"
+		id="reset"
+		label="reset everything"
+		background="#000" color="#fff"
+		background-hover="#FEE27F" color-hover="#000">
+	</widget>
+
+</div>
+</body>
+
+<script src="js/minpubsub.src.js"></script>
+<script src="js/widgets.js"></script>
+<script>
+window.onload = function(){
+	Widgets.convert(document.body);
+};
+subscribe("reset",function(){
+	alert("AHHHH");
+});
+</script>
