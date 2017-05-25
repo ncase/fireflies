@@ -1,4 +1,5 @@
 .widget{
+
 	font-size: 22px;
 	font-family: Helvetica, Arial, sans-serif;
 	font-weight: 100;
@@ -11,6 +12,11 @@
 	cursor: default;
 	
 }
+.widget[inactive]{
+	opacity: 0.33;
+	cursor: default !important;
+	pointer-events: none;
+}
 
 /**************
 
@@ -20,6 +26,8 @@ TOGGLE SWITCHES
 .widget-toggle{
 	width: 100%;
 	overflow: hidden;
+	position: relative;
+	min-height: 45px;
 }
 .widget-toggle #label{
 	width: calc(100% - 130px);
@@ -37,6 +45,15 @@ TOGGLE SWITCHES
 	border: 1px solid #fff;
 	cursor: pointer;
 	transition: background 0.5s ease-in-out;
+
+	position: absolute;
+    top: calc(50% - 22px);
+    right: 0;
+
+    /* There's this dumb bug in Chrome where it doesn't
+    mask things inside a div with rounded corners for
+    whatever reason, so here's a dumb fix for this dumb bug:*/
+    opacity:0.99999;
 }
 .widget-toggle #toggle #toggle_switch{
 	position: absolute;

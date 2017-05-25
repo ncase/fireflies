@@ -29,6 +29,9 @@ Widgets.convert = function(dom){
 		// Replace it in the dom
 		widgetDOM.parentNode.replaceChild(widget.dom, widgetDOM);
 
+		// Gimme an ID!
+		widget.dom.id = config.id;
+
 	}
 
 };
@@ -96,13 +99,13 @@ Widgets.toggle = function(config){
 			toggle.style.background = config["background"];
 		}
 	}
-	subscribe(config.id+"/value", self.onChangeValue);
+	subscribe("toggle/"+config.id, self.onChangeValue);
 	self.onChangeValue(self.value);
 
 	// On Click
 	self.dom.onclick = function(){
 		self.value = !self.value;
-		publish(config.id+"/value", [self.value]);
+		publish("toggle/"+config.id, [self.value]);
 	};
 
 };
@@ -214,14 +217,13 @@ Widgets.slider = function(config){
 		x = Math.round(x/step)*step; // round to nearest step
 
 		// Publish value
-		publish(config.id+"/value", [x]);
+		publish("slider/"+config.id, [x]);
 
 	};
 	self.value = 0;
 	self.onChangeValue = function(value){
 		
 		self.value = value;
-		console.log(value);
 
 		// Convert value to position
 		var knobWidth = slider_knob.getBoundingClientRect().width;
@@ -231,7 +233,7 @@ Widgets.slider = function(config){
 		slider_knob.style.left = left;
 
 	};
-	subscribe(config.id+"/value", self.onChangeValue);
+	subscribe("slider/"+config.id, self.onChangeValue);
 
 };
 
@@ -265,7 +267,7 @@ Widgets.button = function(config){
 		self.setColors(false);
 	};
 	self.dom.onclick = function(){
-		publish(config.id);
+		publish("button/"+config.id);
 	};
 
 };

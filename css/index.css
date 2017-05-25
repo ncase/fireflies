@@ -64,3 +64,7 @@ body{
     border-bottom: 1px solid #444;
     margin: 1.5em 0;
 }
+/*.widget-toggle #label, .widget-slider #top_label{
+	font-family: 'Goudy';
+	font-size: 25px;
+}*/

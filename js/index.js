@@ -14,14 +14,30 @@ CONSTANTS-ISH
 
 *******************************/
 
-var NUM_FIREFLIES = 150;
-var FLY_LOOP = 50;
-var FLY_SWERVE = 0.1;
-var FLY_PERIOD = 3*60; 
-var FLY_RADIUS = 200;
-var FLY_PULL = 5;
-var FLY_SYNC = false;
-var MOUSE_RADIUS = 200;
+var NUM_FIREFLIES,
+	FLY_LOOP,
+	FLY_SWERVE,
+	SHOW_CLOCKS,
+	FLY_CLOCK_SPEED,
+	FLY_RADIUS,
+	FLY_PULL,
+	FLY_SYNC,
+	MOUSE_RADIUS;
+
+var _resetConstants = function(){
+	var area = window.innerWidth * window.innerHeight;
+	NUM_FIREFLIES = Math.round(area * (150)/(1280*600)); // 150 fireflies per 1280x600
+	FLY_LOOP = 50;
+	FLY_SWERVE = 0.1;
+	SHOW_CLOCKS = false;
+	FLY_CLOCK_SPEED = 0.3;
+	FLY_RADIUS = 200;
+	FLY_PULL = 0.035;
+	FLY_SYNC = false;
+	MOUSE_RADIUS = 200;
+};
+
+_resetConstants();
 
 /******************************
 
@@ -40,17 +56,11 @@ window.onload = function(){
 	// Mouse
 	Mouse.init($("#game"));
 
-	// TODO: Initial fireflies based on density??
-
 	// When loaded all assets...
 	_loadAssets(manifest, function(){
 
-		// create a new Sprite from an image path
-		for(var i=0; i<NUM_FIREFLIES; i++){
-			var ff = new Firefly();
-			fireflies.push(ff);
-			app.stage.addChild(ff.graphics);
-		}
+		// Add fireflies!
+		_addFireflies(NUM_FIREFLIES);
 
 		// Animation loop
 		app.ticker.add(function(delta){
@@ -59,8 +69,44 @@ window.onload = function(){
 			}
 		});
 
+		// Synchronize 'em!
+		_syncConstants();
+
 	});
 
+	// Play bg music whenever
+	var bg_loop = new Howl({
+		src: "sounds/forest.mp3",
+		volume: 0.8,
+		loop: true
+	});
+	bg_loop.play();
+
+	// Set up widgets!
+	Widgets.convert($("#words"));
+
+};
+
+var _addFireflies = function(num){
+	for(var i=0; i<num; i++){
+		var ff = new Firefly();
+		fireflies.push(ff);
+		app.stage.addChild(ff.graphics);
+	}
+};
+
+var _removeFireflies = function(num){
+	for(var i=0; i<num; i++){
+		var ff = fireflies.pop();
+		app.stage.removeChild(ff.graphics);
+	}
+};
+
+var _resetFireflies = function(){
+	for(var i=0; i<fireflies.length; i++){
+		var ff = fireflies[i];
+		ff.clock = Math.random();
+	}	
 };
 
 /******************************
@@ -85,8 +131,8 @@ function Firefly(){
 	self.speed = 0.5 + Math.random()*1;
 	self.swerve = (Math.random()-0.5)*FLY_SWERVE;
 
-	// Cycle per two seconds! (60 frames)
-	self.cycle = Math.random()*FLY_PERIOD;
+	// Clock! From 0 to 1
+	self.clock = Math.random();
 
 	// Flash
 	var flash = _makeMovieClip("firefly", {anchorX:0.5, anchorY:0.5});
@@ -109,6 +155,32 @@ function Firefly(){
 	var wings = _makeMovieClip("firefly", {anchorX:0.5, anchorY:0.5});
 	wings.gotoAndStop((Math.random()<0.5) ? 3 : 4);
 	g.addChild(wings);
+
+	// Clock
+	var clock = new PIXI.Container();
+	clock.visible = false;
+	g.addChild(clock);
+
+	// Dark Clock
+	var darkClock = new PIXI.Container();
+	clock.addChild(darkClock);
+	var darkClockBody = _makeMovieClip("firefly", {anchorX:0.5, anchorY:0.5});
+	darkClockBody.gotoAndStop(7);
+	darkClock.addChild(darkClockBody);
+	var darkClockHand = _makeMovieClip("firefly", {anchorX:0.5, anchorY:0.5});
+	darkClockHand.gotoAndStop(8);
+	darkClock.addChild(darkClockHand);
+
+	// Light Clock
+	var lightClock = new PIXI.Container();
+	lightClock.alpha = 0;
+	clock.addChild(lightClock);
+	var lightClockBody = _makeMovieClip("firefly", {anchorX:0.5, anchorY:0.5});
+	lightClockBody.gotoAndStop(5);
+	lightClock.addChild(lightClockBody);
+	var lightClockHand = _makeMovieClip("firefly", {anchorX:0.5, anchorY:0.5});
+	lightClockHand.gotoAndStop(6);
+	lightClock.addChild(lightClockHand);
 
 	// Update
 	self.update = function(delta){
@@ -137,20 +209,19 @@ function Firefly(){
 
 		// Increment cycle
 		flash.alpha *= 0.9;
-		self.cycle += delta;
+		self.clock += (delta/60)*FLY_CLOCK_SPEED;
 
 		// If near mouse, get chaotic, and fast!
 		if(Mouse.pressed && closeEnough(self,Mouse,MOUSE_RADIUS)){
-			self.cycle += 10+Math.random()*10;
+			self.clock += Math.random()*0.15;
 		}
 
 		// Flashed?
-		if(self.cycle>FLY_PERIOD){
+		if(self.clock>1){
 
 			// Flash!
 			flash.alpha = 1;
-			//self.cycle -= FLY_PERIOD;
-			self.cycle = 0;
+			self.clock = 0;
 
 			// Bring nearby fireflies up.
 			if(FLY_SYNC){
@@ -158,15 +229,16 @@ function Firefly(){
 					var ff = fireflies[i];
 					if(ff==self) continue; // is self? forget it
 					if(closeEnough(self,ff,FLY_RADIUS)){ // is close enough?
-						var pull = (ff.cycle/FLY_PERIOD); // to prevent double-pulling
-						ff.cycle += pull*FLY_PULL;
-						if(ff.cycle>FLY_PERIOD) ff.cycle=FLY_PERIOD;
+						var pull = (ff.clock/1); // to prevent double-pulling
+						ff.clock += pull*FLY_PULL;
+						if(ff.clock>1) ff.clock=1;
 					}
 				}
 			}
 
 		}
 		body2.alpha = flash.alpha;
+		lightClock.alpha = flash.alpha;
 
 		//////////////
 		// Graphics //
@@ -179,6 +251,11 @@ function Firefly(){
 
 		// Flap wings
 		wings.gotoAndStop( (wings.currentFrame==3) ? 4 : 3 );
+
+		// Clocks!
+		clock.rotation = -g.rotation;
+		clock.visible = SHOW_CLOCKS;
+		darkClockHand.rotation = lightClockHand.rotation = self.clock*Math.TAU;
 
 	};
 	self.update(0);
@@ -208,29 +285,73 @@ WIDGET CODE: Modifying "Constants"
 
 *******************************/
 
+// Synchronize with the UI
+var _syncConstants = function(){
+
+	publish("slider/numFireflies", [NUM_FIREFLIES]);
+
+	publish("toggle/showClocks", [SHOW_CLOCKS]);
+	publish("slider/clockSpeed", [FLY_CLOCK_SPEED]);
+
+	publish("toggle/neighborNudgeRule", [FLY_SYNC]);
+	publish("slider/nudgeAmount", [FLY_PULL]);
+	publish("slider/neighborRadius", [FLY_RADIUS]);
+
+};
+
 // Num of Fireflies
 
-subscribe("slider/numFireflies", function(){
+subscribe("slider/numFireflies", function(value){
+
+	// Settle the difference...
+	if(value > fireflies.length){
+		_addFireflies(value-fireflies.length);
+	}
+	if(value < fireflies.length){
+		_removeFireflies(fireflies.length-value);
+	}
+
+	// Then make that the new constant.
+	NUM_FIREFLIES = value;
+
 });
 
 // Internal Clock
 
-subscribe("toggle/showClocks", function(){
+subscribe("toggle/showClocks", function(value){
+	SHOW_CLOCKS = value;
 });
-subscribe("slider/clockSpeed", function(){
+subscribe("slider/clockSpeed", function(value){
+	FLY_CLOCK_SPEED = value
 });
 
 // Neighbor Nudge Rule
 
-subscribe("toggle/neighborNudgeRule", function(){
+subscribe("toggle/neighborNudgeRule", function(value){
+	FLY_SYNC = value;
+	if(FLY_SYNC){
+		$("#nudgeAmount").removeAttribute("inactive");
+		$("#neighborRadius").removeAttribute("inactive");
+	}else{
+		$("#nudgeAmount").setAttribute("inactive","yes");
+		$("#neighborRadius").setAttribute("inactive","yes");
+	}
 });
-subscribe("slider/neighborRadius", function(){
+subscribe("slider/nudgeAmount", function(value){
+	FLY_PULL = value;
 });
-subscribe("slider/nudgeAmount", function(){
+subscribe("slider/neighborRadius", function(value){
+	FLY_RADIUS = value;
 });
 
 // Reset Everything
 
-subscribe("button/reset", function(){
+subscribe("button/resetFireflies", function(){
+	_resetFireflies();
 });
 
+subscribe("button/resetEverything", function(){
+	_resetConstants();
+	_syncConstants();
+	_resetFireflies();
+});

@@ -68,8 +68,11 @@
 <hr/>
 
 	<widget type="toggle"
-		label="'Nudge thy neighbor' rule:<br>click to turn on &rarr;"
-		color="#FEE27F" label-on="ON" label-off="OFF">
+		id="neighborNudgeRule"
+		label="Nudge thy neighbor:<br>(click to turn on&rarr;)"
+		background="#000" color="#fff"
+		background-on="#FEE27F" color-on="#000"
+		label-on="ON" label-off="OFF">
 	</widget>
 
 <hr/>
@@ -121,49 +124,65 @@ Reset everything
 <hr/>
 
 	<widget type="slider"
+		id="numFireflies"
 		label="Number of fireflies:"
-		color="#FEE27F"
-		min=50 max=500
-		label-min="50" label-max="500">
+		background="#FEE27F" color="#fff"
+		min=10 max=500 step=1
+		label-min="10" label-max="500">
 	</widget>
 
-<hr/>
-
 	<widget type="toggle"
+		id="showClocks"
 		label="Show clocks:"
-		color="#FEE27F" label-on="ON" label-off="OFF">
-	</widget>
-	<widget type="slider"
-		label="Fireflies' clock speed:"
-		color="#FEE27F" 
-		min=? max=?
-		label-min="hecka slow" label-max="hecka fast">
+		background="#000" color="#fff"
+		background-on="#FEE27F" color-on="#000"
+		label-on="ON" label-off="OFF">
 	</widget>
 
-<hr/>
+	<widget type="slider"
+		id="clockSpeed"
+		label="Fireflies' clock speed:"
+		background="#FEE27F" color="#fff"
+		min="0.2" max="2" step="0.05"
+		label-min="slow" label-max="fast">
+	</widget>
 
 	<widget type="toggle"
-		label="'Nudge thy neighbor' rule:"
-		color="#FEE27F" label-on="ON" label-off="OFF">
+		id="neighborNudgeRule"
+		label="Nudge thy neighbor:"
+		background="#000" color="#fff"
+		background-on="#FEE27F" color-on="#000"
+		label-on="ON" label-off="OFF">
 	</widget>
+
 	<widget type="slider"
+		id="nudgeAmount"
 		label="How much to nudge clock forward:"
-		color="#FEE27F" 
-		min=? max=?
+		background="#FEE27F" color="#fff"
+		min="0.01" max="0.10" step="0.001"
 		label-min="a bit" label-max="a lot">
 	</widget>
+
 	<widget type="slider"
-		label="How close neighbor must be to be affected:"
-		color="#FEE27F" 
-		min=? max=?
-		label-min="close" label-max="far">
+		id="neighborRadius"
+		label="How close neighbor must be:"
+		background="#FEE27F" color="#fff"
+		min=50 max=500 step=10
+		label-min="nearby" label-max="faraway">
 	</widget>
 
-<hr/>
+	<widget type="button"
+		id="resetFireflies"
+		label="reset fireflies"
+		background="#000" color="#fff"
+		background-hover="#FEE27F" color-hover="#000">
+	</widget>
 
 	<widget type="button"
+		id="resetEverything"
 		label="reset everything"
-		color="#FEE27F" onclick="publish('reset');">
+		background="#000" color="#fff"
+		background-hover="#FEE27F" color-hover="#000">
 	</widget>
 
 <hr/>
