@@ -182,6 +182,9 @@ function Firefly(){
 	lightClockHand.gotoAndStop(6);
 	lightClock.addChild(lightClockHand);
 
+	// Mouse LAST pressed... a little decay...
+	var _chaos = 0;
+
 	// Update
 	self.update = function(delta){
 
@@ -212,9 +215,11 @@ function Firefly(){
 		self.clock += (delta/60)*FLY_CLOCK_SPEED;
 
 		// If near mouse, get chaotic, and fast!
-		if(Mouse.pressed && closeEnough(self,Mouse,MOUSE_RADIUS)){
+		if(Mouse.pressed) _chaos=1;
+		if(_chaos>0.01 && closeEnough(self,Mouse,MOUSE_RADIUS)){
 			self.clock += Math.random()*0.15;
 		}
+		_chaos *= 0.8;
 
 		// Flashed?
 		if(self.clock>1){

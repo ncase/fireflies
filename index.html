@@ -1,17 +1,39 @@
-<!--
-
-// insert cool ascii art here //
-
--->
-
 <!doctype>
 <html>
 
 <head>
+
+	<!-- META -->
 	<title>Fireflies</title>
-	<meta charset="UTF-8">
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta content="utf-8" http-equiv="encoding">
+	<meta charset="utf-8">
+	<link rel="icon" type="image/png" href="favicon.png">
+
+	<!-- TRANSLATE: Schema.org markup for Google+ -->
+	<meta itemprop="name" content="Fireflies">
+	<meta itemprop="description" content="a small simulation of small fireflies">
+	<meta itemprop="image" content="http://ncase.me/fireflies/social/thumbnail.png">
+
+	<!-- TRANSLATE: Twitter Large Card -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@ncasenmare">
+	<meta name="twitter:title" content="Fireflies">
+	<meta name="twitter:description" content="a small simulation of small fireflies">
+	<meta name="twitter:creator" content="@ncasenmare">
+	<meta name="twitter:image" content="http://ncase.me/fireflies/social/thumbnail.png">
+
+	<!-- TRANSLATE: Open Graph data -->
+	<meta property="og:title" content="Fireflies">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="http://ncase.me/fireflies/">
+	<meta property="og:image" content="http://ncase.me/fireflies/social/thumbnail.png">
+	<meta property="og:description" content="a small simulation of small fireflies">
+
+	<!-- Styles -->
 	<link rel="stylesheet" href="css/index.css">
 	<link rel="stylesheet" href="css/widgets.css">
+
 </head>
 <body>
 
@@ -22,7 +44,10 @@
 <div id="words">
 <h1>“Fireflies”</h1>
 
-<p>Like Christmas lights gently floating in midair, fireflies always add a little bit of magic to the forests they live in.</p>
+<p>
+Like Christmas lights gently floating in midair,
+fireflies always add a little bit of magic to the forests they live in.
+</p>
 
 <div style="overflow:hidden;">
 	<img src="ui/chaos.png" width="150" style="float: left;"/>
@@ -35,61 +60,118 @@
 	</div>
 </div>
 
-<p>But some firefly species add even <em>more</em> magic. In Southeast Asia, if you go out to the riverbank deep in the night, you&#39;ll be treated to this stunning lightshow – courtesy of the Thailand firefly:</p>
+<p>
+But some firefly species add even <em>more</em> magic.
+In Southeast Asia, if you go out to the riverbank deep in the night,
+you'll be treated to this stunning lightshow – courtesy of the Thailand firefly:
+</p>
 
 <iframe width="350" height="197" src="https://www.youtube-nocookie.com/embed/ZGvtnE1Wy6U?rel=0&amp;start=64" frameborder="0" allowfullscreen></iframe>
 
-<p>A whole mangrove forest, lighting up all at once, plunging into darkness, then lighting up all again – in near-perfect synchrony. How do thousands of fireflies coordinate with each other? Who is the conductor of this silent symphony?</p>
+<p>
+A whole mangrove forest, lighting up all at once,
+plunging into darkness, then lighting up all again – in near-perfect synchrony.
+How do thousands of fireflies coordinate with each other?
+Who is the conductor of this silent symphony?
+</p>
 
-<p>This was a mystery for nearly a century, and in 1992, a team of US scientists set out to solve it. Sadly, but not surprisingly, the press mocked them – <em>“Govt. Blows Your Tax $$ to Study Fireflies in Borneo: Not a Bright Idea!”</em> read one tabloid. Undeterred, the scientists pressed on, cameras and calculators in hand.</p>
+<p>
+This was a mystery for nearly a century, and in 1992,
+a team of US scientists set out to solve it.
+Sadly, but not surprisingly, the press mocked them –
+<em>“Govt. Blows Your Tax $$ to Study Fireflies in Borneo:
+Not a Bright Idea!”</em> read one tabloid.
+Undeterred, the scientists pressed on, cameras and calculators in hand.
+</p>
 
-<p>So, how <em>do</em> thousands of fireflies pick a leader to follow, a maestro to keep their flashing in time? The answer, the scientists found, is simple:</p>
+<p>
+So, how <em>do</em> thousands of fireflies pick a leader to follow,
+a maestro to keep their flashing in time?
+The answer, the scientists found, is simple:
+</p>
 
-<p>They don&#39;t.</p>
+<p>
+They don't.
+</p>
 
-<p>Each firefly has its <em>own</em> individual internal clock, and every time the clock “strikes twelve”, it flashes.</p>
+<p>
+Each firefly has its <em>own</em> individual internal clock,
+and every time the clock “strikes twelve”, it flashes.
+</p>
 
 <p>
 <img src="ui/clock.png" width="350"/>
 </p>
 
-<p>And instead of synchronizing their clocks to a central leader, each firefly does the following:</p>
+<p>
+And instead of synchronizing their clocks to a central leader,
+each firefly does the following:
+</p>
 
-<p>Step 1: when you see a nearby firefly flash, nudge your clock a little bit forward.</p>
+<p>
+Step 1: when you see a nearby firefly flash,
+nudge your clock a little bit forward.
+</p>
 
 <p>
 <img src="ui/nudge.png" width="350"/>
 </p>
 
-<p>Step 2: that&#39;s it.</p>
+<p>
+Step 2: that's it.
+</p>
 
-<p>Can such a small, short-ranged interaction really cause an entire forest-ful of fireflies to flash in synchronous harmony? Only one way to find out...</p>
+<p>
+Can such a small, short-ranged interaction really cause an
+entire forest-ful of fireflies to flash in synchronous harmony?
+Only one way to find out...
+</p>
 
 <hr/>
 
+	<!-- TRANSLATE: 'label', 'label-on', and 'label-off' -->
 	<widget type="toggle"
 		id="neighborNudgeRule"
-		label="Nudge thy neighbor:<br>(click to turn on&rarr;)"
 		background="#000" color="#fff"
 		background-on="#FEE27F" color-on="#000"
+
+		label="Nudge thy neighbor:<br>(click to turn on&rarr;)"
 		label-on="ON" label-off="OFF">
 	</widget>
 
 <hr/>
 
-<p>Wait. Watch carefully.</p>
+<p>
+Wait. Watch carefully.
+</p>
 
-<p>What do you see?</p>
+<p>
+What do you see?
+</p>
 
-<p>At first, not much. The fireflies still seem to be flashing without pattern.</p>
+<p>
+At first, not much.
+The fireflies still seem to be flashing without pattern.
+</p>
 
-<p>But after a while, you may notice small “patches” of fireflies firing together – but these individual “patches” are still out of sync.</p>
+<p>
+But after a while, you may notice small “patches” of fireflies firing together –
+but these individual “patches” are still out of sync.
+</p>
 
-<p>After a bit longer, you start seeing fireflies performing a “wave”, like excited fans in the stands during a baseball game.</p>
+<p>
+After a bit longer, you start seeing fireflies performing a “wave”,
+like excited fans in the stands during a baseball game.
+</p>
 
-<p>Finally, all but a few fireflies are flashing together – and eventually, even these laggards join in the collective dance.</p>
+<p>
+Finally, all but a few fireflies are flashing together –
+and eventually, even these laggards join in the collective dance.
+</p>
 
-<p>What&#39;s more amazing? If you disrupt these fireflies by causing some chaos...</p>
+<p>
+What's more amazing? If you disrupt these fireflies by causing some chaos...
+</p>
 
 <div style="overflow:hidden;">
 	<img src="ui/chaos.png" width="150" style="float: left;"/>
@@ -102,92 +184,101 @@
 	</div>
 </div>
 
-<p>...yes, it may cause them to divide for a moment, but slowly and surely, they shall collect themselves again, and flash as one.</p>
+<p>
+...yes, it may cause them to divide for a moment, but slowly and surely,
+they shall collect themselves again, and flash as one.
+</p>
 
-<p>Here&#39;s a few more buttons &amp; sliders you can use, to play around with these virtual fireflies:</p>
-
-<!--
-
-Num of fireflies
-...
-Show clocks
-How fast should clock be?
-...
-Nudge thy neighbor
-how much to nudge each clock?
-How close must neighbor be?
-...
-Reset everything
-
--->
+<p>
+Here's a few more buttons &amp; sliders you can use,
+to play around with these virtual fireflies:
+</p>
 
 <hr/>
 
+	<!-- TRANSLATE: 'label', 'label-min', and 'label-max' -->
 	<widget type="slider"
 		id="numFireflies"
-		label="Number of fireflies:"
 		background="#FEE27F" color="#fff"
 		min=10 max=500 step=1
+
+		label="Number of fireflies:"
 		label-min="10" label-max="500">
 	</widget>
 
+	<!-- TRANSLATE: 'label', 'label-on', and 'label-off' -->
 	<widget type="toggle"
 		id="showClocks"
-		label="Show clocks:"
 		background="#000" color="#fff"
 		background-on="#FEE27F" color-on="#000"
+
+		label="Show clocks:"
 		label-on="ON" label-off="OFF">
 	</widget>
 
+	<!-- TRANSLATE: 'label', 'label-min', and 'label-max' -->
 	<widget type="slider"
 		id="clockSpeed"
-		label="Fireflies' clock speed:"
 		background="#FEE27F" color="#fff"
 		min="0.2" max="2" step="0.05"
+
+		label="Fireflies' clock speed:"
 		label-min="slow" label-max="fast">
 	</widget>
 
+	<!-- TRANSLATE: 'label', 'label-on', and 'label-off' -->
 	<widget type="toggle"
 		id="neighborNudgeRule"
-		label="Nudge thy neighbor:"
 		background="#000" color="#fff"
 		background-on="#FEE27F" color-on="#000"
+
+		label="Nudge thy neighbor:"
 		label-on="ON" label-off="OFF">
 	</widget>
 
+	<!-- TRANSLATE: 'label', 'label-min', and 'label-max' -->
 	<widget type="slider"
 		id="nudgeAmount"
-		label="How much to nudge clock forward:"
 		background="#FEE27F" color="#fff"
 		min="0.01" max="0.10" step="0.001"
+
+		label="How much to nudge clock forward:"
 		label-min="a bit" label-max="a lot">
 	</widget>
 
+	<!-- TRANSLATE: 'label', 'label-min', and 'label-max' -->
 	<widget type="slider"
 		id="neighborRadius"
-		label="How close neighbor must be:"
 		background="#FEE27F" color="#fff"
 		min=50 max=500 step=10
+
+		label="How close neighbor must be:"
 		label-min="nearby" label-max="faraway">
 	</widget>
 
+	<!-- TRANSLATE: 'label' -->
 	<widget type="button"
 		id="resetFireflies"
-		label="reset fireflies"
 		background="#000" color="#fff"
-		background-hover="#FEE27F" color-hover="#000">
+		background-hover="#FEE27F" color-hover="#000"
+
+		label="reset fireflies">
 	</widget>
 
+	<!-- TRANSLATE: 'label' -->
 	<widget type="button"
 		id="resetEverything"
-		label="reset everything"
 		background="#000" color="#fff"
-		background-hover="#FEE27F" color-hover="#000">
+		background-hover="#FEE27F" color-hover="#000"
+
+		label="reset everything">
 	</widget>
 
 <hr/>
 
-<p>And that&#39;s the secret behind our fireflies&#39; magic trick:</p>
+<p>
+And that's the secret behind our fireflies' magic trick:
+</p>
 
 <div style="overflow:hidden; text-align:center">
 <img src="ui/emergence.png" width="350" style="margin-bottom:25px"/>
@@ -200,21 +291,54 @@ Reset everything
 </div>
 </div>
 
-<p>As it turns out, fireflies aren&#39;t the only things that synchronize themselves from the bottom up. Your neurons create brain waves. Your heart&#39;s pacemaker cells fire in sync. <a target="_blank" href="https://www.youtube.com/watch?v=5v5eBf2KwF8">Even a bunch of lifeless metronomes on a wobbly platform will start to march together.</a> On top of all that, understanding self-synchrony has helped us build better lasers, computers, and communications technology!</p>
+<p>
+As it turns out, fireflies aren't the only things that
+synchronize themselves from the bottom up.
+Your neurons create brain waves.
+Your heart's pacemaker cells fire in sync.
+<a target="_blank" href="https://www.youtube.com/watch?v=5v5eBf2KwF8">
+Even a bunch of lifeless metronomes on a wobbly platform will start to march together.</a>
+On top of all that, understanding self-synchrony has helped us build better
+lasers, computers, and communications technology!
+</p>
 
-<p>And to think, the mathematics of self-synchronizing systems was discovered in part by a few scientists who just really loved fireflies. Looks like calling their project <em>“Not a Bright Idea”</em> was not a bright idea.</p>
+<p>
+And to think, the mathematics of self-synchronizing systems was discovered
+in part by a few scientists who just really loved fireflies.
+Looks like calling their project <em>“Not a Bright Idea”</em> was not a bright idea.
+</p>
 
-<p>. . .</p>
+<p>
+. . .
+</p>
 
-<p>You float along, softly, in silence, occasionally punctuating the darkness with a flash of bright light. You&#39;re beautiful in your own right, but by yourself, you&#39;re not really that interesting.</p>
+<p>
+You float along, softly, in silence,
+occasionally punctuating the darkness with a flash of bright light.
+You're beautiful in your own right, but by yourself, you're not really that interesting.
+</p>
 
-<p>But whenever you flash your light, you inspire those close to you to flash too, a little bit sooner than they otherwise would have. And those close to you, in turn, inspire those close to <em>them</em>.</p>
+<p>
+But whenever you flash your light, you inspire those close to you to flash too,
+a little bit sooner than they otherwise would have.
+And those close to you, in turn, inspire those close to <em>them</em>.
+</p>
 
-<p>And so on, and so on.</p>
+<p>
+And so on, and so on.
+</p>
 
-<p>For a long time, nothing seems to happen. Then, a few small groups start flashing together. Then, a wave of light sweeps across the swarm. And finally, you&#39;re all dazzling together, a brilliant beacon, all in harmony, in tandem – in synchrony.</p>
+<p>
+For a long time, nothing seems to happen.
+Then, a few small groups start flashing together.
+Then, a wave of light sweeps across the swarm.
+And finally, you're all dazzling together,
+a brilliant beacon, all in harmony, in tandem – in synchrony.
+</p>
 
-<p>What small-scale interaction will you make today, little firefly?</p>
+<p>
+What small-scale interaction will you make today, little firefly?
+</p>
 
 </div>
 

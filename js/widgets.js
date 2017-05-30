@@ -179,26 +179,56 @@ Widgets.slider = function(config){
 	var max = parseFloat(config.max);
 	var step = parseFloat(config.step);
 
+	// Convert Touch to Cursor
+	var _getMouse = function(event){
+		var pos = {};
+		if(event.changedTouches){
+			// Touch
+			//var bounds = target ? target.getBoundingClientRect() : {left:0,top:0};
+			pos.x = event.changedTouches[0].clientX;// - bounds.left;
+			pos.y = event.changedTouches[0].clientY;// - bounds.top;
+		}else{
+			// Not Touch
+			pos.x = event.offsetX;
+			pos.y = event.offsetY;
+		}
+		return pos;
+	};
+
 	// Mouse Events
 	var offsetX = 0;
 	slider_knob.onmousedown = function(event){
+		var pos = _getMouse(event);
 		self.onGrabbing(true);
-		offsetX = event.pageX - slider_knob.getBoundingClientRect().left;
+		offsetX = pos.x - slider_knob.getBoundingClientRect().left;
 		event.stopPropagation();
 	};
+	slider_knob.addEventListener("touchstart", function(event){
+		slider_knob.onmousedown(event);
+		event.preventDefault();
+	});
 	self.dom.onmousedown = function(event){
+		var pos = _getMouse(event);
 		self.onGrabbing(true);
 		offsetX = slider_knob.getBoundingClientRect().width/2;
-		self.mouseToValue(event.pageX);
+		self.mouseToValue(pos.x);
 	};
-	window.addEventListener("mouseup",function(){
+	self.dom.addEventListener("touchstart", function(event){
+		self.dom.onmousedown(event);
+	});
+	var _onMouseUp = function(){
 		self.onGrabbing(false);
-	});
-	window.addEventListener("mousemove",function(event){
+	};
+	window.addEventListener("mouseup", _onMouseUp);
+	document.body.addEventListener("touchend",_onMouseUp,false);
+	var _onMouseMove = function(event){
 		if(self.grabbing){
-			self.mouseToValue(event.pageX);
+			var pos = _getMouse(event);
+			self.mouseToValue(pos.x);
 		}
-	});
+	};
+	window.addEventListener("mousemove", _onMouseMove);
+	window.addEventListener("touchmove", _onMouseMove);
 	self.mouseToValue = function(pageX){
 
 		// Convert to raw position
