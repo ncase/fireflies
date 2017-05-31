@@ -189,8 +189,8 @@ Widgets.slider = function(config){
 			pos.y = event.changedTouches[0].clientY;// - bounds.top;
 		}else{
 			// Not Touch
-			pos.x = event.offsetX;
-			pos.y = event.offsetY;
+			pos.x = event.pageX;
+			pos.y = event.pageY;
 		}
 		return pos;
 	};

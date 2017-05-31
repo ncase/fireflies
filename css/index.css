@@ -28,7 +28,7 @@ body{
 	padding-left: 15px;
 	padding-right: 15px;
 	padding-top: 50px;
-	padding-bottom: 300px;
+	padding-bottom: 150px;
 
 	/* Background */
 	background: rgba(0,0,0,0.5);
@@ -64,7 +64,54 @@ body{
     border-bottom: 1px solid #444;
     margin: 1.5em 0;
 }
-/*.widget-toggle #label, .widget-slider #top_label{
-	font-family: 'Goudy';
-	font-size: 25px;
-}*/
+#words hr.footer{
+	border-top: 1px solid #444;
+    height: 10px;
+    margin: 100px 0;
+}
+#credits{
+	font-size: 18px;
+	color: #666;
+}
+#credits a{
+	color: #bbb;
+}
+#credits a:hover{
+	color: #fff;
+}
+
+#patreon{
+
+	text-decoration: none;
+	display: inline-block;
+
+	font-family: Helvetica, Arial, sans-serif;
+    font-weight: 100;
+
+    font-size: 23px;
+    padding: 7px 10px;
+    border-radius: 30px;
+    border: 1px solid #fff;
+    text-align: center;
+    cursor: pointer;
+    
+    -webkit-transition: all 0.15s ease-in-out;
+    -moz-transition: all 0.15s ease-in-out;
+    -ms-transition: all 0.15s ease-in-out;
+    transition: all 0.15s ease-in-out;
+
+    width: 300px;
+	background: rgb(0, 0, 0);
+	color: rgb(255, 255, 255);
+	border-color: rgb(255, 255, 255);
+
+}
+#patreon:hover{
+	background: #FEE27F;
+	color: #000;
+	border-color: #000;
+}
+
+.sharing{
+
+}
