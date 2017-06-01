@@ -27,6 +27,8 @@ var NUM_FIREFLIES,
 var _resetConstants = function(){
 	var area = window.innerWidth * window.innerHeight;
 	NUM_FIREFLIES = Math.round(area * (150)/(1280*600)); // 150 fireflies per 1280x600
+	if(NUM_FIREFLIES<100) NUM_FIREFLIES=100; // actually, MINUMUM 100
+	
 	FLY_LOOP = 50;
 	FLY_SWERVE = 0.1;
 	SHOW_CLOCKS = false;

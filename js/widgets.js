@@ -92,10 +92,10 @@ Widgets.toggle = function(config){
 	self.onChangeValue = function(newValue){
 		self.value = newValue;
 		if(self.value){ // on
-			toggle_switch.style.left = "-80px";
+			toggle_switch.style.left = "0px";
 			toggle.style.background = config["background-on"];
 		}else{ // off
-			toggle_switch.style.left = "0px";
+			toggle_switch.style.left = "-80px";
 			toggle.style.background = config["background"];
 		}
 	}

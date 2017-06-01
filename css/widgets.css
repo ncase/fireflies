@@ -76,7 +76,7 @@ TOGGLE SWITCHES
 	text-align: center;
 	padding-top: 6px;
 }
-.widget-toggle #toggle #toggle_switch #toggle_on{
+.widget-toggle #toggle #toggle_switch #toggle_off{
     left: 110px;
 }
 .widget-toggle #toggle #toggle_switch #toggle_knob{
